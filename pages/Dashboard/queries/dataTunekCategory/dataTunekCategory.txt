@@ -1,0 +1,35 @@
+SELECT 
+    SUM(Tutar) AS ToplamSatis, 
+    COUNT(DISTINCT FisNo) AS ToplamFis, 
+    p.AracSayisi, 
+    p.ToplamPax, 
+    p.ToplamCocuk,
+    SUM(Tutar) / p.ToplamPax AS TutarPPax,
+    SUM(Tutar) / COUNT(DISTINCT FisNo) AS TutarPFis,  
+    s.KTarih
+FROM 
+    Satis AS s
+LEFT JOIN 
+    Stok s1 ON s1.Kod COLLATE Turkish_CI_AS = s.Kod COLLATE Turkish_CI_AS
+LEFT JOIN 
+    Kategoriler k ON k.Reyon COLLATE Turkish_CI_AS = s1.AnaGrup COLLATE Turkish_CI_AS
+LEFT JOIN 
+    (SELECT 
+         COUNT(DISTINCT ID) AS AracSayisi, 
+         SUM(Pax) AS ToplamPax, 
+         SUM(Cocuk) AS ToplamCocuk, 
+         Tarih
+     FROM 
+         Rezervasyon 
+     WHERE 
+         Tarih > '2024-05-09'
+     GROUP BY 
+         Tarih) AS p ON p.Tarih  = s.KTarih
+WHERE 
+    s.Iptal = 0 
+    AND s.KTarih > '2024-05-09' 
+    AND k.Kategori COLLATE Turkish_CI_AS = {{selCategoriesTunek.selectedOptionLabel}} COLLATE Turkish_CI_AS
+GROUP BY 
+    p.AracSayisi, p.ToplamPax, p.ToplamCocuk, s.KTarih
+ORDER BY 
+    s.KTarih ASC;

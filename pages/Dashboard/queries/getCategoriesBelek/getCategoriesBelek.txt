@@ -1,0 +1,1 @@
+SELECT distinct Kategori as label, Kategori as code FROM Kategoriler

@@ -1,0 +1,6 @@
+Select Kod, Aciklama, Birim, AnaGrup, Barkod
+From Stok
+where aciklama like '%'+{{tblProductsBelek.searchText}}+'%' OR Kod LIKE  {{tblProductsBelek.searchText}} + '%' OR Barkod LIKE  {{tblProductsBelek.searchText}} + '%'
+ORDER BY Kod
+OFFSET {{(tblProductsBelek.pageNo - 1) * tblProductsBelek.pageSize}} ROWS
+FETCH NEXT {{tblProductsBelek.pageSize}} ROWS ONLY;

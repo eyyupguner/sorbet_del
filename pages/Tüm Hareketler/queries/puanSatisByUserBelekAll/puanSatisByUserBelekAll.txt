@@ -1,0 +1,19 @@
+SELECT 
+    s.FisNo,
+    SUM(s.Toplam) AS ToplamSatis,
+    COUNT(s.ID) AS SatirSayisi,
+    s2.MinSaat
+FROM 
+    Satis s
+LEFT JOIN (
+    SELECT MIN(Saat) AS MinSaat, FisNo
+    FROM Satis 
+    GROUP BY FisNo
+) s2 ON s.FisNo = s2.FisNo
+WHERE
+    s.Iptal = 0
+    AND s.Ktarih = {{dat_PrimDayBelek.formattedDate}} 
+GROUP BY 
+    s.FisNo, s2.MinSaat
+ORDER BY 
+    s.FisNo DESC;

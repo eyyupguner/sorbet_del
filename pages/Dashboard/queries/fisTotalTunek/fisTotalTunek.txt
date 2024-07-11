@@ -1,0 +1,5 @@
+SELECT sum(Tutar) as ToplamSatis, count(distinct FisNo) as ToplamFis, KTarih
+from Satis 
+where Iptal=0 and Zaman between {{moment().subtract('days', 1).format('YYYY-MM-DD') + ' 00:00:00' }} and {{moment().subtract('days', 1).format('YYYY-MM-DD HH:mm:ss') }} or Zaman between {{moment().format('YYYY-MM-DD') + ' 00:00:00' }} and {{moment().format('YYYY-MM-DD HH:mm:s') }}
+group by KTarih
+order by KTarih

@@ -1,0 +1,107 @@
+{
+  "unpublishedPage": {
+    "name": "Kategori Düzenleme",
+    "slug": "kategori-duzenleme",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 1040,
+          "containerStyle": "none",
+          "snapRows": 124,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 89,
+          "minHeight": 1292,
+          "dynamicTriggerPathList": [],
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Kategori Düzenleme_getProductsEmptyBelek",
+              "name": "getProductsEmptyBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Kategori Düzenleme_getProductsEmptyTunek",
+              "name": "getProductsEmptyTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Kategori Düzenleme_getCategoriesBelek",
+              "name": "getCategoriesBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Kategori Düzenleme_getCategoriesTunek",
+              "name": "getCategoriesTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Kategori Düzenleme_getProductsBelek",
+              "name": "getProductsBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "tblProductsBelek.pageSize",
+                "tblProductsBelek.searchText",
+                "(tblProductsBelek.pageNo - 1) * tblProductsBelek.pageSize"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Kategori Düzenleme_getProductsTunek",
+              "name": "getProductsTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "tblProductsTunek.searchText",
+                "(tblProductsTunek.pageNo - 1) * tblProductsTunek.pageSize",
+                "tblProductsTunek.pageSize"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Kategori Düzenleme",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "667e9b7dbeb5015ea42507ab_45ad7d77-47d1-490a-917d-bd9f9ca16023"
+}

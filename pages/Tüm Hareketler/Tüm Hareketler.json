@@ -1,0 +1,129 @@
+{
+  "unpublishedPage": {
+    "name": "Tüm Hareketler",
+    "slug": "tum-hareketler",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 590,
+          "containerStyle": "none",
+          "snapRows": 124,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 89,
+          "minHeight": 1292,
+          "dynamicTriggerPathList": [],
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Tüm Hareketler_fetchUsersBelek",
+              "name": "fetchUsersBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Tüm Hareketler_fetchUsersTunek",
+              "name": "fetchUsersTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Tüm Hareketler_puanSatisByUserBelek",
+              "name": "puanSatisByUserBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "sel_PuanKartBelek.selectedOptionValue",
+                "dat_PrimDayBelek.formattedDate"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Tüm Hareketler_puanSatisByUserBelekAll",
+              "name": "puanSatisByUserBelekAll",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "dat_PrimDayBelek.formattedDate"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Tüm Hareketler_puanSatisByUserTunek",
+              "name": "puanSatisByUserTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "sel_PuanKartTunek.selectedOptionValue",
+                " dat_PrimDayTunek.formattedDate"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Tüm Hareketler_puanSatisByUserTunekAll",
+              "name": "puanSatisByUserTunekAll",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "dat_PrimDayTunek.formattedDate"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Tüm Hareketler_fisDetayBelek",
+              "name": "fisDetayBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "tblPuanSatisByUserBelek.selectedRow.FisNo"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Tüm Hareketler_fisDetayTunek",
+              "name": "fisDetayTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "tblPuanSatisByUserTunek.selectedRow.FisNo"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Tüm Hareketler",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "667e9b7dbeb5015ea42507ab_90d7de37-a729-4f4e-8c54-62e09db6d39c"
+}

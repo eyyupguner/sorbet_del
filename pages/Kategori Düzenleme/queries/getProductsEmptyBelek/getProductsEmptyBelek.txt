@@ -1,0 +1,5 @@
+SELECT DISTINCT s2.Kod AS Kods, s1.Aciklama, s1.Birim, s1.AnaGrup
+FROM Satis s2 
+LEFT JOIN stok s1 ON s1.kod = s2.kod
+WHERE (s1.AnaGrup IS NULL OR s1.AnaGrup LIKE '[0-9]%') 
+AND s1.Aciklama != '';

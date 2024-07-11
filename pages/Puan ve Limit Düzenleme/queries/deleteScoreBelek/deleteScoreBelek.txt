@@ -1,0 +1,2 @@
+DELETE FROM PuanTablosu 
+WHERE ID = {{tblScoreTableBelek.triggeredRow.ID}}; 

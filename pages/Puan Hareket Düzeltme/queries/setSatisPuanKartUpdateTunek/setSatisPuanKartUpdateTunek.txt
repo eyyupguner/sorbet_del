@@ -1,0 +1,4 @@
+INSERT INTO SatisPuanUpdate
+(SatisID, PrimKodEski, PrimKodYeni, Zaman, Kullanici)
+VALUES
+{{tblFisDetayTunek.updatedRows.map((satis) => `(${satis.allFields.ID}, '${satis.allFields.PrimKodEski}', '${satis.updatedFields.PrimKart}', '${moment().format('YYYY-MM-DD HH:mm:ss')}', '${appsmith.store.Kullanici}')`).join(',\n')}}

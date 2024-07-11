@@ -1,0 +1,72 @@
+{
+    "needsErrorInfo": false,
+    "isCompact": false,
+    "boxShadow": "none",
+    "mobileBottomRow": 4,
+    "widgetName": "MenuButton1",
+    "configureMenuItems": {
+        "label": "Configure menu items",
+        "id": "config",
+        "config": {
+            "id": "config",
+            "label": "Menu Item",
+            "isVisible": true,
+            "isDisabled": false
+        }
+    },
+    "displayName": "Menu button",
+    "iconSVG": "/static/media/icon.33a4057faa7212849fa6ff1f15f2da0f.svg",
+    "topRow": 0,
+    "bottomRow": 4,
+    "parentRowSpace": 10,
+    "type": "MENU_BUTTON_WIDGET",
+    "hideCard": false,
+    "mobileRightColumn": 36,
+    "animateLoading": true,
+    "parentColumnSpace": 12.921875,
+    "dynamicTriggerPathList": [{"key": "menuItems.menuItem3.onClick"}],
+    "leftColumn": 53,
+    "dynamicBindingPathList": [
+        {"key": "menuColor"},
+        {"key": "borderRadius"},
+        {"key": "label"}
+    ],
+    "isDisabled": false,
+    "sourceData": "[]",
+    "key": "ousuwte798",
+    "isDeprecated": false,
+    "rightColumn": 64,
+    "thumbnailSVG": "/static/media/thumbnail.57aa4a1b6aaab3ade6ce3bc3a1177531.svg",
+    "menuVariant": "PRIMARY",
+    "widgetId": "j8tiitadqq",
+    "onCanvasUI": {
+        "focusBGCSSVar": "--on-canvas-ui-widget-focus",
+        "disableParentSelection": false,
+        "focusColorCSSVar": "--on-canvas-ui-widget-selection",
+        "selectionBGCSSVar": "--on-canvas-ui-widget-selection",
+        "selectionColorCSSVar": "--on-canvas-ui-widget-focus"
+    },
+    "menuItems": {"menuItem3": {
+        "onClick": "{{removeValue('Yetki');\nremoveValue('Kullanici');\nremoveValue('Exp');\nnavigateTo('Giriş', {}, 'SAME_WINDOW');}}",
+        "widgetId": "",
+        "index": 0,
+        "label": "Çıkış",
+        "id": "menuItem3",
+        "isVisible": true,
+        "isDisabled": false
+    }},
+    "isVisible": true,
+    "label": "{{appsmith.store.Kullanici}}",
+    "version": 1,
+    "parentId": "8gexk0nuc3",
+    "tags": ["Buttons"],
+    "renderMode": "CANVAS",
+    "isLoading": false,
+    "mobileTopRow": 0,
+    "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+    "mobileLeftColumn": 20,
+    "menuItemsSource": "STATIC",
+    "menuColor": "{{appsmith.theme.colors.primaryColor}}",
+    "iconAlign": "right",
+    "placement": "CENTER"
+}

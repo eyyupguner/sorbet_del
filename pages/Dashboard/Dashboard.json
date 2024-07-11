@@ -1,0 +1,192 @@
+{
+  "unpublishedPage": {
+    "name": "Dashboard",
+    "slug": "dashboard",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 1224,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 1720,
+          "containerStyle": "none",
+          "snapRows": 53,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 89,
+          "minHeight": 550,
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Dashboard_dataBelek",
+              "name": "dataBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Dashboard_dataHourBelek",
+              "name": "dataHourBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 30000
+            },
+            {
+              "id": "Dashboard_dataHourTunek",
+              "name": "dataHourTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Dashboard_dataTunek",
+              "name": "dataTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Dashboard_getCategoriesBelek",
+              "name": "getCategoriesBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Dashboard_getCategoriesTunek",
+              "name": "getCategoriesTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Dashboard_fisTotalBelek",
+              "name": "fisTotalBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "moment().subtract('days', 1).format('YYYY-MM-DD HH:mm:ss') ",
+                "moment().subtract('days', 1).format('YYYY-MM-DD') + ' 00:00:00' ",
+                "moment().format('YYYY-MM-DD HH:mm:s') ",
+                "moment().format('YYYY-MM-DD') + ' 00:00:00' "
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Dashboard_fisTotalTunek",
+              "name": "fisTotalTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "moment().subtract('days', 1).format('YYYY-MM-DD HH:mm:ss') ",
+                "moment().subtract('days', 1).format('YYYY-MM-DD') + ' 00:00:00' ",
+                "moment().format('YYYY-MM-DD HH:mm:s') ",
+                "moment().format('YYYY-MM-DD') + ' 00:00:00' "
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Dashboard_paxTotalBelek",
+              "name": "paxTotalBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "moment().subtract('days', 1).format('YYYY-MM-DD HH:mm:ss') ",
+                "moment().subtract('days', 1).format('YYYY-MM-DD') + ' 00:00:00' ",
+                "moment().format('YYYY-MM-DD HH:mm:s') ",
+                "moment().format('YYYY-MM-DD') + ' 00:00:00' "
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Dashboard_paxTotalTunek",
+              "name": "paxTotalTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "moment().subtract('days', 1).format('YYYY-MM-DD HH:mm:ss') ",
+                "moment().subtract('days', 1).format('YYYY-MM-DD') + ' 00:00:00' ",
+                "moment().format('YYYY-MM-DD HH:mm:s') ",
+                "moment().format('YYYY-MM-DD') + ' 00:00:00' "
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Dashboard_JsHour.Belek",
+              "name": "JsHour.Belek",
+              "collectionId": "Dashboard_JsHour",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  const today = moment().startOf('day');\n  const yesterday = moment(today).subtract(1, 'day').startOf('day');\n  console.log('Today:', today.format());\n  console.log('Yesterday:', yesterday.format());\n  const todayData = dataHourBelek.data.filter(obj => {\n    const objDate = moment(obj.Zaman);\n    return obj.TutarPPax !== null && objDate.isSame(today, 'day');\n  }).map(obj => ({\n    'x': obj.Zaman,\n    'y': obj.TutarPPax.toFixed(2)\n  }));\n  const yesterdayData = dataHourBelek.data.filter(obj => {\n    const objDate = moment(obj.Zaman);\n    return obj.TutarPPax !== null && objDate.isSame(yesterday, 'day');\n  }).map(obj => ({\n    'x': obj.Zaman,\n    'y': obj.TutarPPax.toFixed(2)\n  }));\n  const chartData = {\n    tooltip: {\n      trigger: 'axis',\n      axisPointer: {\n        type: 'line'\n      }\n    },\n    legend: {\n      data: ['Dün', 'Bugün']\n    },\n    xAxis: {\n      type: 'category',\n      data: todayData.map(item => item.x)\n    },\n    yAxis: {\n      type: 'value'\n    },\n    series: [{\n      name: 'Bugün',\n      type: 'line',\n      data: todayData.map(item => item.y),\n      smooth: true\n    }, {\n      name: 'Dün',\n      type: 'line',\n      data: yesterdayData.map(item => item.y),\n      smooth: true\n    }]\n  };\n  console.log('Chart Data:', chartData);\n  return chartData;\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Dashboard_JsHour.Tunek",
+              "name": "JsHour.Tunek",
+              "collectionId": "Dashboard_JsHour",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  const today = moment().startOf('day');\n  const yesterday = moment(today).subtract(1, 'day').startOf('day');\n  console.log('Today:', today.format());\n  console.log('Yesterday:', yesterday.format());\n  const todayData = dataHourTunek.data.filter(obj => {\n    const objDate = moment(obj.Zaman);\n    return obj.TutarPPax !== null && objDate.isSame(today, 'day');\n  }).map(obj => ({\n    'x': obj.Zaman,\n    'y': obj.TutarPPax.toFixed(2)\n  }));\n  const yesterdayData = dataHourTunek.data.filter(obj => {\n    const objDate = moment(obj.Zaman);\n    return obj.TutarPPax !== null && objDate.isSame(yesterday, 'day');\n  }).map(obj => ({\n    'x': obj.Zaman,\n    'y': obj.TutarPPax.toFixed(2)\n  }));\n  const chartData = {\n    tooltip: {\n      trigger: 'axis',\n      axisPointer: {\n        type: 'line'\n      }\n    },\n    legend: {\n      data: ['Dün', 'Bugün']\n    },\n    xAxis: {\n      type: 'category',\n      data: todayData.map(item => item.x)\n    },\n    yAxis: {\n      type: 'value'\n    },\n    series: [{\n      name: 'Bugün',\n      type: 'line',\n      data: todayData.map(item => item.y),\n      smooth: true\n    }, {\n      name: 'Dün',\n      type: 'line',\n      data: yesterdayData.map(item => item.y),\n      smooth: true\n    }]\n  };\n  console.log('Chart Data:', chartData);\n  return chartData;\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Dashboard_dataBelekCategory",
+              "name": "dataBelekCategory",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "selCategoriesBelek.selectedOptionLabel"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Dashboard_dataTunekCategory",
+              "name": "dataTunekCategory",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "selCategoriesTunek.selectedOptionLabel"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Dashboard",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "667e9b7dbeb5015ea42507ab_d1cea977-100d-459a-8740-78ae2418a5a1"
+}

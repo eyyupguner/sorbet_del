@@ -1,0 +1,92 @@
+{
+  "unpublishedPage": {
+    "name": "Reyon Puan",
+    "slug": "reyon-puan",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 650,
+          "containerStyle": "none",
+          "snapRows": 124,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 89,
+          "minHeight": 1292,
+          "dynamicTriggerPathList": [],
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Reyon Puan_tcmbKur",
+              "name": "tcmbKur",
+              "confirmBeforeExecute": false,
+              "pluginType": "API",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Reyon Puan_puanSatisBelek",
+              "name": "puanSatisBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "(moment(dpPuanDateBelekStart.formattedDate).subtract('days', 1).format('YYYY-MM-DD') + ' 18:00:00')",
+                "(dpPuanDateBelekEnd.formattedDate + ' 18:00:00')"
+              ],
+              "timeoutInMillisecond": 20000
+            },
+            {
+              "id": "Reyon Puan_puanSatisTunek",
+              "name": "puanSatisTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "dpPuanDateTunekEnd.formattedDate ",
+                "dpPuanDateTunekStart.formattedDate "
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Reyon Puan_js1.parseXML",
+              "name": "js1.parseXML",
+              "collectionId": "Reyon Puan_js1",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "() => {\n  const parser = new DOMParser();\n  const xmlDoc = parser.parseFromString(tcmbKur.data, \"text/xml\");\n  const currencies = xmlDoc.getElementsByTagName(\"Currency\");\n  for (let i = 0; i < currencies.length; i++) {\n    const currency = currencies[i];\n    const currencyCode = currency.getAttribute(\"CurrencyCode\");\n    if (currencyCode === \"USD\") {\n      const forexSelling = currency.getElementsByTagName(\"BanknoteSelling\")[0].childNodes[0].nodeValue;\n      return forexSelling;\n    }\n  }\n  return null;\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Reyon Puan",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "667e9b7dbeb5015ea42507ab_f6f59bd8-4b73-472e-8e5c-02910a5de9c4"
+}

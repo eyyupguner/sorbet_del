@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "JsHour",
+    "pageId": "Dashboard",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "Dashboard_JsHour",
+  "deleted": false,
+  "gitSyncId": "667e9b7dbeb5015ea42507ab_d895c6f3-8772-478a-a11d-ceac98df3696"
+}

@@ -1,0 +1,79 @@
+{
+  "unpublishedPage": {
+    "name": "Gün Sonu Puan Toplu",
+    "slug": "gun-sonu-puan-toplu",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 590,
+          "containerStyle": "none",
+          "snapRows": 124,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 89,
+          "minHeight": 1292,
+          "dynamicTriggerPathList": [],
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Gün Sonu Puan Toplu_tcmbKur",
+              "name": "tcmbKur",
+              "confirmBeforeExecute": false,
+              "pluginType": "API",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Gün Sonu Puan Toplu_puanSatisBelek",
+              "name": "puanSatisBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "(moment(dpPuanDateBelekStart.formattedDate).subtract('days', 1).format('YYYY-MM-DD') + ' 18:00:00')",
+                "(dpPuanDateBelekEnd.formattedDate + ' 18:00:00')"
+              ],
+              "timeoutInMillisecond": 20000
+            },
+            {
+              "id": "Gün Sonu Puan Toplu_puanSatisTunek",
+              "name": "puanSatisTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "dpPuanDateTunekEnd.formattedDate ",
+                "dpPuanDateTunekStart.formattedDate "
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Gün Sonu Puan Toplu",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "667e9b7dbeb5015ea42507ab_00f5c21e-051f-4d0f-9e0b-12d92db5b9d7"
+}

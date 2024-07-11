@@ -1,0 +1,5 @@
+SELECT count(distinct ID) as AracSayisi, sum(Pax) as ToplamPax, sum(Cocuk) as ToplamCocuk, Tarih
+From Rezervasyon
+where KTarih between {{moment().subtract('days', 1).format('YYYY-MM-DD') + ' 00:00:00' }} and {{moment().subtract('days', 1).format('YYYY-MM-DD HH:mm:ss') }} or KTarih between {{moment().format('YYYY-MM-DD') + ' 00:00:00' }} and {{moment().format('YYYY-MM-DD HH:mm:s') }}
+group by Tarih
+order by Tarih

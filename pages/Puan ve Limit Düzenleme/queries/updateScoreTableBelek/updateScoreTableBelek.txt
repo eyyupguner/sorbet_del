@@ -1,0 +1,14 @@
+UPDATE PuanTablosu
+SET 
+    AnaGrup = '{{tblScoreTableBelek.updatedRow.AnaGrup}}',
+    [Limit] = {{tblScoreTableBelek.updatedRow.Limit}},
+    Birim = '{{tblScoreTableBelek.updatedRow.Birim}}',
+    Sira = {{tblScoreTableBelek.updatedRow.Sira}},
+    Puan = {{tblScoreTableBelek.updatedRow.Puan}},
+    PuanAdi = '{{tblScoreTableBelek.updatedRow.PuanAdi}}',
+    PuanSira = {{tblScoreTableBelek.updatedRow.PuanSira}},
+    Canak = {{tblScoreTableBelek.updatedRow.Canak?1:0}},
+		BasSaat = CONVERT(TIME, '{{tblScoreTableBelek.updatedRow.BasSaat}}'),
+		BitSaat = CONVERT(TIME, '{{tblScoreTableBelek.updatedRow.BitSaat}}')
+WHERE 
+    ID = {{tblScoreTableBelek.updatedRow.ID}}

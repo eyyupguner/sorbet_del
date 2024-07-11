@@ -1,0 +1,11 @@
+SELECT sum(Tutar) as ToplamSatis, count(distinct FisNo) as ToplamFis, p.AracSayisi, p.ToplamPax, p.ToplamCocuk,sum(Tutar)/p.ToplamPax as TutarPPax,sum(Tutar)/count(distinct FisNo) as TutarPFis,  s.KTarih
+from Satis as s
+left join Stok s1 on s1.Kod=s.Kod
+left join Kategoriler k on k.Reyon=s1.AnaGrup
+left join 
+	(SELECT count(distinct ID) as AracSayisi, sum(Pax) as ToplamPax, sum(Cocuk) as ToplamCocuk, Tarih
+From Rezervasyon where Tarih > '2024-05-09'
+Group By Tarih) as p On p.Tarih=s.KTarih
+where Iptal=0 and KTarih > '2024-05-09' and k.Kategori  ={{selCategoriesBelek.selectedOptionLabel}} 
+Group By p.AracSayisi, p.ToplamPax, p.ToplamCocuk,KTarih
+Order by KTarih asc

@@ -1,0 +1,111 @@
+{
+  "unpublishedPage": {
+    "name": "Kart Bazlı Puanlar",
+    "slug": "kart-bazl-puanlar",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 590,
+          "containerStyle": "none",
+          "snapRows": 124,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 89,
+          "minHeight": 1292,
+          "dynamicTriggerPathList": [],
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Kart Bazlı Puanlar_fetchUsersBelek",
+              "name": "fetchUsersBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Kart Bazlı Puanlar_fetchUsersTunek",
+              "name": "fetchUsersTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Kart Bazlı Puanlar_puanSatisByUserBelek",
+              "name": "puanSatisByUserBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "sel_PuanKartBelek.selectedOptionValue",
+                "dat_PrimDayBelek.formattedDate"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Kart Bazlı Puanlar_puanSatisByUserTunek",
+              "name": "puanSatisByUserTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "sel_PuanKartTunek.selectedOptionValue",
+                "dat_PrimDayTunek.formattedDate"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Kart Bazlı Puanlar_fisDetayBelek",
+              "name": "fisDetayBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "tblPuanSatisByUserBelek.selectedRow.FisNo"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Kart Bazlı Puanlar_fisDetayTunek",
+              "name": "fisDetayTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "tblPuanSatisByUserTunek.selectedRow.FisNo"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Kart Bazlı Puanlar",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "6654856c2e3ffe2d76d89a7c_61824d45-5428-4383-a63d-95fbc3418cdc"
+}

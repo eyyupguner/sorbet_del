@@ -1,0 +1,2 @@
+SELECT Aciklama as label,  ID as ID
+FROM PrimKart 

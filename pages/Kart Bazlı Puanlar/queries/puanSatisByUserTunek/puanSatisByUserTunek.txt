@@ -1,0 +1,42 @@
+WITH LimitSubquery AS (
+    SELECT 
+        s_inner.FisNo,
+        pt.PuanAdi,
+        SUM(s_inner.Toplam) AS TotalTutar,
+        pt.Limit
+    FROM 
+        Satis s_inner
+    LEFT JOIN 
+        Stok s2 ON s_inner.Kod = s2.Kod
+    LEFT JOIN 
+        PuanTablosu pt ON s2.AnaGrup = pt.AnaGrup AND s2.Birim = pt.Birim AND pt.Canak=0
+    WHERE
+		s_inner.PrimKod = {{sel_PuanKartTunek.selectedOptionValue}} AND
+		s_inner.Ktarih = {{dat_PrimDayTunek.formattedDate}} AND
+		s_inner.Iptal = 0
+    GROUP BY 
+        s_inner.FisNo, pt.PuanAdi, s2.Birim, pt.Limit
+)
+SELECT 
+    s.FisNo,
+    SUM(s.Tutar) AS ToplamSatis,
+    pt.PuanAdi,
+    SUM(s.Tutar * pt.Puan / 100) AS ToplamPuan
+FROM 
+    Satis s
+LEFT JOIN 
+    Stok s2 ON s.Kod = s2.Kod
+LEFT JOIN 
+    PuanTablosu pt ON s2.AnaGrup =pt.AnaGrup AND s2.Birim = pt.Birim AND pt.Canak=0
+LEFT JOIN 
+    LimitSubquery ls ON s.FisNo = ls.FisNo AND pt.PuanAdi = ls.PuanAdi 
+WHERE
+		s.PrimKod = {{sel_PuanKartTunek.selectedOptionValue}}
+    AND s.Iptal = 0
+    AND ( ls.TotalTutar >= ls.Limit)
+		AND s.Ktarih = {{dat_PrimDayTunek.formattedDate}} 
+GROUP BY 
+    s.FisNo,  pt.PuanAdi, s2.Birim, s.PrimKod
+ORDER BY 
+    s.FisNo DESC;
+		

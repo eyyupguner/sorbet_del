@@ -1,0 +1,3 @@
+UPDATE Stok 
+SET AnaGrup = {{tblProductsTunek.updatedRow.AnaGrup}}
+WHERE Kod = {{tblProductsTunek.updatedRow.Kod}}

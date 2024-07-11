@@ -1,0 +1,1 @@
+SELECT * FROM PuanKullanici WHERE KullaniciAdi = {{inpUserName.text}};

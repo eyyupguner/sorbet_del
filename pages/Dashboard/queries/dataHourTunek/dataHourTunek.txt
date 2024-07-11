@@ -1,0 +1,33 @@
+SELECT 
+    SUM(s.Tutar) AS ToplamSatis, 
+    COUNT(DISTINCT s.FisNo) AS ToplamFis, 
+    p.AracSayisi, 
+    p.ToplamPax, 
+    p.ToplamCocuk, 
+    SUM(s.Tutar) / p.ToplamPax AS TutarPPax, 
+    SUM(s.Tutar) / COUNT(DISTINCT s.FisNo) AS TutarPFis,  
+    FORMAT(s.Zaman, 'yyyy-MM-dd HH') AS Zaman
+FROM 
+    Satis AS s
+LEFT JOIN 
+    (
+        SELECT 
+            COUNT(DISTINCT ID) AS AracSayisi, 
+            SUM(Pax) AS ToplamPax, 
+            SUM(Cocuk) AS ToplamCocuk,  
+            FORMAT(KTarih, 'yyyy-MM-dd HH') AS Zaman
+        FROM 
+            Rezervasyon 
+        WHERE 
+            KTarih > DATEADD(day, -2, CAST(GETDATE() AS DATE))  -- Using DATEADD to get data from 2 days ago
+        GROUP BY 
+            FORMAT(KTarih, 'yyyy-MM-dd HH')
+    ) AS p 
+    ON p.Zaman = FORMAT(s.Zaman, 'yyyy-MM-dd HH')
+WHERE 
+    s.Iptal = 0 
+    AND s.KTarih > DATEADD(day, -2, CAST(GETDATE() AS DATE))  -- Using DATEADD to filter data from 2 days ago
+GROUP BY 
+    p.AracSayisi, p.ToplamPax, p.ToplamCocuk, FORMAT(s.Zaman, 'yyyy-MM-dd HH')
+ORDER BY 
+    FORMAT(s.Zaman, 'yyyy-MM-dd HH') ASC;

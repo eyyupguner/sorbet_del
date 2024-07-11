@@ -1,0 +1,3 @@
+INSERT INTO PuanTablosu
+(AnaGrup, [Limit], Birim, Sira, Puan, PuanAdi, PuanSira, Canak, BasSaat, BitSaat)
+VALUES({{tblScoreTableBelek.newRow.AnaGrup}}, {{tblScoreTableBelek.newRow.Limit}}, {{tblScoreTableBelek.newRow.Birim}}, 0, {{tblScoreTableBelek.newRow.Puan}}, {{tblScoreTableBelek.newRow.PuanAdi}},{{tblScoreTableBelek.newRow.PuanSira}},0,CONVERT(TIME, '{{tblScoreTableBelek.newRow.BasSaat}}'),CONVERT(TIME, '{{tblScoreTableBelek.newRow.BitSaat}}'));

@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "access",
+    "pageId": "Giriş",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "Giriş_access",
+  "deleted": false,
+  "gitSyncId": "667e9b7dbeb5015ea42507ab_b56cc83f-6b18-4e55-a593-e53c2254e38b"
+}

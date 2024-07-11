@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "js1",
+    "pageId": "Gün Sonu Puan Toplu",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "Gün Sonu Puan Toplu_js1",
+  "deleted": false,
+  "gitSyncId": "667e9b7dbeb5015ea42507ab_7a6c2188-ea2a-4edf-bc6d-017d38efce13"
+}

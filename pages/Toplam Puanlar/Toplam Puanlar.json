@@ -1,0 +1,91 @@
+{
+  "unpublishedPage": {
+    "name": "Toplam Puanlar",
+    "slug": "toplam-puanlar",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 630,
+          "containerStyle": "none",
+          "snapRows": 124,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 89,
+          "minHeight": 1292,
+          "dynamicTriggerPathList": [],
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Toplam Puanlar_puanSatisBelek",
+              "name": "puanSatisBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "dat_PrimDayBelekStart.formattedDate",
+                "dat_PrimDayBelekEnd.formattedDate"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Toplam Puanlar_puanSatisTunek",
+              "name": "puanSatisTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "dat_PrimDayTunekStart.formattedDate",
+                "dat_PrimDayTunekEnd.formattedDate"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Toplam Puanlar_fisDetayBelek",
+              "name": "fisDetayBelek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "tblPuanSatisByUserBelek.selectedRow.FisNo"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Toplam Puanlar_fisDetayTunek",
+              "name": "fisDetayTunek",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "tblPuanSatisByUserTunek.selectedRow.FisNo"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Toplam Puanlar",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "667e9b7dbeb5015ea42507ab_829a3777-df25-41e8-ad03-335f291d6d75"
+}

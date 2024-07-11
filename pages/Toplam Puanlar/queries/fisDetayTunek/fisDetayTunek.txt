@@ -1,0 +1,6 @@
+select s1.FisNo, s1.Kod, s2.Aciklama as UrunAdı, s2.AnaGrup, s2.Birim, s1.Miktar, s1.Toplam, pk.Aciklama as PrimKart
+from Satis s1
+left join Stok s2 on s1.Kod=s2.Kod
+left join PrimKart pk on pk.ID=s1.PrimKod
+where s1.FisNo = {{tblPuanSatisByUserTunek.selectedRow.FisNo}} and s1.Iptal=0
+order by s2.AnaGrup

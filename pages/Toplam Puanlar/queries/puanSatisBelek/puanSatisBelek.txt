@@ -1,0 +1,44 @@
+WITH LimitSubquery AS (
+    SELECT 
+        s_inner.FisNo,
+        pt.PuanAdi,
+        SUM(s_inner.Toplam) AS TotalTutar,
+        pt.Limit,
+				s_inner.PrimKod
+    FROM 
+        Satis s_inner
+    LEFT JOIN 
+        Stok s2 ON s_inner.Kod = s2.Kod
+    LEFT JOIN 
+        PuanTablosu pt ON s2.AnaGrup = pt.AnaGrup AND s2.Birim = pt.Birim AND pt.Canak=0
+    WHERE
+		s_inner.Iptal = 0 AND
+		s_inner.Ktarih BETWEEN {{dat_PrimDayBelekStart.formattedDate}} AND {{dat_PrimDayBelekEnd.formattedDate}}	
+    GROUP BY 
+        s_inner.FisNo, pt.PuanAdi, s2.Birim, pt.Limit, s_inner.PrimKod
+)
+SELECT 
+    s.FisNo,
+    SUM(s.Tutar) AS ToplamSatis,
+    pt.PuanAdi,
+    SUM(s.Tutar * pt.Puan / 100) AS ToplamPuan,
+		pk.Aciklama
+FROM 
+    Satis s
+LEFT JOIN 
+    Stok s2 ON s.Kod = s2.Kod
+LEFT JOIN 
+    PuanTablosu pt ON s2.AnaGrup =pt.AnaGrup AND s2.Birim = pt.Birim AND pt.Canak=0
+LEFT JOIN 
+    PrimKart pk ON pk.ID =s.PrimKod 
+LEFT JOIN 
+    LimitSubquery ls ON s.FisNo = ls.FisNo AND pt.PuanAdi = ls.PuanAdi AND ls.PrimKod = s.PrimKod 
+WHERE
+		s.PrimKod is not null
+		AND s.Iptal = 0 
+		AND ( ls.TotalTutar >= ls.Limit)
+		AND s.Ktarih BETWEEN {{dat_PrimDayBelekStart.formattedDate}} AND {{dat_PrimDayBelekEnd.formattedDate}} 
+GROUP BY 
+    pk.Aciklama, s.FisNo,  pt.PuanAdi, s2.Birim
+ORDER BY 
+    pk.Aciklama DESC;

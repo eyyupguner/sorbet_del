@@ -1,0 +1,5 @@
+UPDATE Satis
+SET PrimKod = CASE
+  {{tblFisDetayTunek.updatedRows.map((satis) => `WHEN ID = ${satis.allFields.ID} THEN '${satis.updatedFields.PrimKart}'`).join('\n')}}
+END
+WHERE ID IN ({{tblFisDetayTunek.updatedRows.map((satis) => satis.allFields.ID).join(',')}});
